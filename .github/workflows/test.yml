@@ -6,9 +6,9 @@ jobs:
   style:
     runs-on: ubuntu-latest
     steps:
-      - name: "Run clang-format"
       - uses: actions/checkout@v2
-      - uses: DoozyX/clang-format-lint-action@v0.18.1
+      - name: "Run clang-format"
+        uses: DoozyX/clang-format-lint-action@v0.18.1
   build:
     runs-on: ubuntu-latest
     steps:
