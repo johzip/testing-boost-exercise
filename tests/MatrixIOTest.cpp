@@ -29,5 +29,4 @@ BOOST_AUTO_TEST_CASE(openM3)
   BOOST_CHECK_EQUAL_COLLECTIONS(vecA.begin(), vecA.end(), vecB.begin(), vecB.end());
 }
 
-
 BOOST_AUTO_TEST_SUITE_END()
