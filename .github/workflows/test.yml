@@ -4,19 +4,16 @@ on: [push]
 
 jobs:
   style:
-    name: clang-format Code Formatter
     runs-on: ubuntu-latest
     steps:
-      - name: Formatter
-        uses: actions/checkout@v2
-        uses: actions/setup-python@v2
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
         with:
           python-version: '3.8'
         uses: ivanludvig/clang-format-action@v1.4
       - name: "Run clang-format"
         run: clang-format -i src/*
   build:
-    name: cmake build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
