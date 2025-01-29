@@ -29,18 +29,7 @@ jobs:
           python-version: '3.8'
       - name: "ctest"
         run: ctest
-
-
-    steps:
-    - uses: actions/checkout@v2
-    - uses: DoozyX/clang-format-lint-action@v0.18.1
-      with:
-        source: '.'
-        exclude: './third_party ./external'
-        extensions: 'h,cpp'
-        clangFormatVersion: 18
-        style: chromium
-
+        
 #        run: clang-format -i src/*
 #        env:
 #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
