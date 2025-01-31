@@ -1,0 +1,35 @@
+name: boost Test
+
+on: [push]
+
+jobs:
+  style:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: "Run clang-format"
+        uses: DoozyX/clang-format-lint-action@v0.18.1
+      - name: "Install dependencies"
+        run: sudo apt update && sudo apt install -y clang-format
+      - name: Style check
+        run: clang-format -i src/*.cpp src/*.hpp tests/*.cpp
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v4.2.2
+      - name: "Install dependencies"
+        run: sudo apt update && sudo apt install -y build-essential libboost-all-dev libeigen3-dev libyaml-cpp-dev cmake gcc g++
+      - name: "Build Project"
+        run: mkdir build && cd build && cmake .. && make -j
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: "Install dependencies"
+        run: sudo apt update && sudo apt install -y build-essential libboost-all-dev libeigen3-dev libyaml-cpp-dev cmake gcc g++
+      - name: "Build Project"
+        run: mkdir build && cd build && cmake .. && make -j
+      - name: "ctest"
+        run: cd build && ctest
