@@ -18,21 +18,17 @@ jobs:
     steps:
       - name: Checkout Project
         uses: actions/checkout@v4.2.2
-      - name: Build Project
-        uses: threeal/cmake-action@v2.1.0
-        with:
-          source-dir: src
-          build-dir: build
+      - name: "Install dependencies"
+        run: sudo apt update && sudo apt install -y build-essential libboost-all-dev libeigen3-dev libyaml-cpp-dev cmake gcc g++
+      - name: "Build Project"
+        run: mkdir build && cd build && cmake .. && make -j
   test:
     needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-        with:
-          python-version: '3.8'
       - name: "ctest"
-        run: ctest
+        run: cd build && ctest
         
 #        run: clang-format -i src/*
 #        env:
