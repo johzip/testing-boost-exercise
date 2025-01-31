@@ -32,8 +32,4 @@ jobs:
       - name: "Build Project"
         run: mkdir build && cd build && cmake .. && make -j
       - name: "ctest"
-        run: ctest
-        
-#        run: clang-format -i src/*
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: cd build && ctest
