@@ -1,5 +1,10 @@
 # SIDEMADE - Simple Dense Matrix Decomposition
 
+[![boost Test](https://github.com/johzip/testing-boost-exercise/actions/workflows/test.yml/badge.svg)](https://github.com/johzip/testing-boost-exercise/actions/workflows/test.yml)
+
+I dont know why, but the MatrixSolverTest failes. here following is the ```ctest ctest --rerun-failed --output-on-failure```. The Test I was suppost to build for the exercise works.
+![ctest_expand](ctest_expand.png)
+
 A simple demo code to read dense matrices from files and solve linear systems with them.
 
 ## Folder Structure
