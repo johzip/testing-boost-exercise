@@ -28,7 +28,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: "ctest"
-        run: cd build && ctest
+        run: ctest
         
 #        run: clang-format -i src/*
 #        env:
