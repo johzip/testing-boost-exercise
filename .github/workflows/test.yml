@@ -9,6 +9,10 @@ jobs:
       - uses: actions/checkout@v2
       - name: "Run clang-format"
         uses: DoozyX/clang-format-lint-action@v0.18.1
+      - name: "Install dependencies"
+        run: sudo apt update && sudo apt install -y clang-format
+      - name: Style check
+        run: clang-format -i src/*.cpp src/*.hpp tests/*.cpp
   build:
     runs-on: ubuntu-latest
     steps:
